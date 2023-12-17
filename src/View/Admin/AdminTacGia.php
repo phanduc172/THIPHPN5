@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,10 +59,10 @@
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <div>
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="AdminNguoiDungController">Người dùng</a>
-                                        <a class="nav-link" href="AdminTruyenController">Truyện</a>
-                                        <a class="nav-link" href="AdminTacGiaController">Tác giả</a>
-                                        <a class="nav-link" href="AdminTheLoaiController">Thể loại</a>
+                                        <a class="nav-link" href="#">Người dùng</a>
+                                        <a class="nav-link" href="#">Truyện</a>
+                                        <a class="nav-link" href="#">Tác giả</a>
+                                        <a class="nav-link" href="#">Thể loại</a>
                                     </nav>
                                 </div>
                             </nav>
@@ -71,7 +74,7 @@
             <main>
                 <div class="container-fluid px-4">
                     <h2 class="mt-4">Quản lý tác giả</h2>
-                    <form action="AdminTacGiaController" method="get" class="form-inline d-flex justify-content-between align-items-center flex-wrap">
+                    <form action="../../Controller/TacGiaController.php" method="get" class="form-inline d-flex justify-content-between align-items-center flex-wrap">
                         <div class="form-group">
                             <label for="txtmatacgia">Mã tác giả:</label>
                             <input name="txtmatacgia" type="text" class="form-control mt-1" placeholder="Nhập mã tác giả">
@@ -109,14 +112,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${dstacgia}" var="tacgia">
-                                        <tr>
-                                            <td>${tacgia.getMatacgia()}</td>
-                                            <td>${tacgia.getTentacgia()}</td>
-                                            <td>${tacgia.getQuequan()}</td>
-                                            <td><a href="AdminTacGiaController?mtg=${tacgia.getMatacgia()}&tab=xoa">Xóa</a> </td>
-                                        </tr>
-                                    </c:forEach>
+                                <?php $dstacgia = isset($_SESSION['dstacgia']) ? $_SESSION['dstacgia'] : []; ?>
+                                <?php foreach ($dstacgia as $key): ?>
+                                    <tr>
+                                        <td class="text-center"><?php echo $key['matacgia']; ?></td>
+                                        <td><?php echo $key['tentacgia']; ?></td>
+                                        <td><?php echo $key['quequan']; ?></td>
+                                        <td><a href="../../Controller/TacgiaController.php?mtg=<?php echo $key['matacgia']; ?>&delete=xoa">Xóa</a> </td>
+                                    </tr>
+                                <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
