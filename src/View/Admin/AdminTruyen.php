@@ -1,3 +1,7 @@
+<?php
+echo '<script src="ckeditor/ckeditor.js"></script>';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +12,14 @@
     <meta name="author" content="" />
     <title>Đọc truyện Online - Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
     <link href="../../../assets/css/adminstyles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="AdminTrangChuController"> <img width="50px" alt="" src="img-truyen/logo-pd.png"> </a>
+        <a class="navbar-brand ps-3" href="AdminTrangChuController"> <img width="50px" alt="" src="../../../assets/img-truyen/logo-pd.png"> </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -42,7 +47,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="AdminTrangChuController">
+                        <a class="nav-link" href="../../Controller/AdminTrangChuController.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Tổng quát
                         </a>
@@ -56,88 +61,109 @@
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <div>
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="AdminNguoiDungController">Người dùng</a>
-                                        <a class="nav-link" href="AdminTruyenController">Truyện</a>
-                                        <a class="nav-link" href="AdminTacGiaController">Tác giả</a>
-                                        <a class="nav-link" href="AdminTheLoaiController">Thể loại</a>
+                                        <a class="nav-link" href="../../Controller/NguoiDungController.php">Người dùng</a>
+                                        <a class="nav-link" href="../../Controller/TruyenController.php">Truyện</a>
+                                        <a class="nav-link" href="../../Controller/TacGiaController.php">Tác giả</a>
+                                        <a class="nav-link" href="../../Controller/TheLoaiController.php">Thể loại</a>
                                     </nav>
                                 </div>
                             </nav>
                         </div>
                     </div>
-            </nav>
-        </div>
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <h2 class="mt-4">Quản lý người dùng</h2>
-                    <form action="AdminNguoiDungController" method="get" class="form-inline d-flex justify-content-between align-items-start flex-wrap">
-                        <div class="form-group">
-                            <label for="txtmanguoidung">Mã người dùng:</label>
-                            <input name="txtmanguoidung" type="text" class="form-control mt-1" placeholder="Nhập mã mã người dùng">
-                        </div>
-                        <div class="form-group">
-                            <label for="txttennguoidung">Tên người dùng:</label>
-                            <input name="txttennguoidung" type="text" class="form-control mt-1" placeholder="Nhập tên người dùng">
-                        </div>
-                        <div class="form-group">
-                            <label for="txttendangnhap">Tên đăng nhập:</label>
-                            <input name="txttendangnhap" type="text" class="form-control mt-1" placeholder="Nhập tên đăng nhập">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtmatkhau">Mật khẩu:</label>
-                            <input name="txtmatkhau" type="text" class="form-control mt-1" placeholder="Nhập mật khẩu">
-                        </div>
-                        <div class="w-100"></div> <!-- Dòng trống để ngắt các nút ra hàng mới -->
-                        <div class="form-group">
-                            <input class="btn btn-secondary mt-2" name="butadd" type="submit" value="Thêm">
-                            <input class="btn btn-secondary mt-2" name="butupdate" type="submit" value="Cập nhật">
-                        </div>
-                        <div class="form-group">
-                        </div>
-                    </form>
-                    <p class="fw-bold text-danger">* Thêm người dùng không cần nhập mã người dùng</p>
-                    <div class="card my-3">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Danh sách người dùng
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Mã người dùng</th>
-                                        <th>Họ tên</th>
-                                        <th>Tên đăng nhập</th>
-                                        <th>Mật khẩu</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${dsnguoidung}" var="nguoidung">
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h2 class="mt-4">Quản lý truyện</h2>
+                        <p class="text-danger mt-1 fw-bold">* Thêm truyện không cần nhập mã truyện</p>
+                        <form action="../../Controller/TruyenController.php" method="get" class="form-inline d-flex justify-content-start align-items-start flex-wrap">
+                            <div class="form-group me-2">
+                                <label for="txtmatruyen">Mã truyện:</label>
+                                <input name="txtmatruyen" type="text" class="form-control mt-1" placeholder="Nhập mã truyện">
+                            </div>
+                            <div class="form-group me-2">
+                                <label for="txttentruyen">Tên truyện:</label>
+                                <input name="txttentruyen" type="text" class="form-control mt-1" placeholder="Nhập tên truyện">
+                            </div>
+                            <div class="form-group me-2">
+                                <label for="txtanh">Ảnh:</label>
+                                <input name="txtanh" type="text" class="form-control mt-1" placeholder="Nhập đường dẫn ảnh">
+                            </div>
+                            <div class="form-group me-2">
+                                <label for="txtmota">Mô tả:</label>
+                                <input name="txtmota" type="text" class="form-control mt-1" placeholder="Nhập mô tả">
+                            </div>
+                            <div class="form-group me-2">
+                                <label for="txtmatacgia">Mã tác giả:</label>
+                                <input name="txtmatacgia" type="text" class="form-control mt-1" placeholder="Nhập mã tác giả">
+                            </div>
+                            <div class="form-group me-2">
+                                <label for="txtmatheloai">Mã thể loại:</label>
+                                <input name="txtmatheloai" type="text" class="form-control mt-1" placeholder="Nhập mã thể loại">
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="form-group me-2">
+                                <label for="txtnoidung">Nội dung</label>
+                                <textarea id="txtnoidung" name="txtnoidung" rows="4" cols="50"></textarea>
+                            </div>
+
+                            <div class="w-100"></div>
+                            <div class="form-group me-2">
+                                <input class="btn btn-secondary mt-2" name="butadd" type="submit" value="Thêm">
+                                <input class="btn btn-secondary mt-2" name="butupdate" type="submit" value="Cập nhật">
+                            </div>
+                            <div class="form-group me-2">
+                            </div>
+                        </form>
+                        <div class="card my-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Danh sách truyện
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead class="text-center align-middle">
                                         <tr>
-                                            <td>${nguoidung.getManguoidung()}</td>
-                                            <td>${nguoidung.getHoten()}</td>
-                                            <td>${nguoidung.getTendangnhap()}</td>
-                                            <td>${nguoidung.getMatkhau()}</td>
-                                            <td><a href="AdminNguoiDungController?mnd=${nguoidung.getManguoidung()}&tab=xoa">Xóa</a> </td>
+                                            <th>Mã truyện</th>
+                                            <th>Tên truyện</th>
+                                            <th>Ảnh</th>
+                                            <th>Nội dung</th>
+                                            <th>Mô tả</th>
+                                            <th>Mã tác giả</th>
+                                            <th>Mã thể loại</th>
+                                            <th></th>
                                         </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <?php $dstruyen = isset($_SESSION['dstruyen']) ? $_SESSION['dstruyen'] : []; ?>
+                                        <?php foreach ($dstruyen as $key): ?>
+                                            <tr>
+                                                <td class="text-center"><?php echo $key['matruyen']; ?></td>
+                                                <td><?php echo $key['tentruyen']; ?></td>
+                                                <td><img width="100" src="../../../assets/<?php echo $key['anh']; ?>" alt="Ảnh truyện"></td>
+                                                <td><?php echo $key['noidung']; ?></td>
+                                                <td><?php echo $key['mota']; ?></td>
+                                                <td><?php echo $key['matacgia']; ?></td>
+                                                <td><?php echo $key['matheloai']; ?></td>
+                                                <td><a href="../../Controller/TruyenController.php?mtr=<?php echo $key['matruyen']; ?>&delete=xoa">Xóa</a> </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </main>
-            <footer class="mt-3 bg-dark text-white fw-bold fs-5 text-center py-3">
-                <p class="m-0">&copy; 2023 No CopyRight</p>
-                <p class="m-0">Mã sinh viên: 20T1020019</p>
-                <p class="m-0">Tên: Phan Đức</p>
-                <p class="m-0">Email: <a class="text-decoration-none text-white" href="mailto:20t1020019@husc.edu">20t1020019@husc.edu</a></p>
-            </footer>
-        </div>
+                </main>
+                <footer class="mt-3 bg-dark text-white fw-bold fs-5 text-center py-3">
+                    <p class="m-0">&copy; 2023 No CopyRight</p>
+                    <p class="m-0">Mã sinh viên: 20T1020019</p>
+                    <p class="m-0">Tên: Phan Đức</p>
+                    <p class="m-0">Email: <a class="text-decoration-none text-white" href="mailto:20t1020019@husc.edu">20t1020019@husc.edu</a></p>
+                </footer>
+            </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        
+    
 </body>
 </html>
