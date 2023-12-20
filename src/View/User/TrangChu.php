@@ -1,7 +1,6 @@
 <?php
 	include '../../Model/TruyenModel.php';
 	include '../../Model/TheLoaiModel.php';
-	$dstruyen = getAllTruyen();
 	$dstheloai = getAllTheloai();
 ?>
 

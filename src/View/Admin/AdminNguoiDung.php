@@ -1,3 +1,7 @@
+<?php
+include '../../Model/NguoiDungModel.php';
+$ds = getAllNguoiDung();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,10 +60,10 @@
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <div>
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="AdminNguoiDungController">Người dùng</a>
-                                        <a class="nav-link" href="AdminTruyenController">Truyện</a>
-                                        <a class="nav-link" href="AdminTacGiaController">Tác giả</a>
-                                        <a class="nav-link" href="AdminTheLoaiController">Thể loại</a>
+                                        <a class="nav-link" href="../../Controller/NguoiDungController.php">Người dùng</a>
+                                        <a class="nav-link" href="../../Controller/TruyenController.php">Truyện</a>
+                                        <a class="nav-link" href="../../Controller/TacGiaController.php">Tác giả</a>
+                                        <a class="nav-link" href="../../Controller/TheLoaiController.php">Thể loại</a>
                                     </nav>
                                 </div>
                             </nav>
@@ -88,7 +92,7 @@
                             <label for="txtmatkhau">Mật khẩu:</label>
                             <input name="txtmatkhau" type="text" class="form-control mt-1" placeholder="Nhập mật khẩu">
                         </div>
-                        <div class="w-100"></div> <!-- Dòng trống để ngắt các nút ra hàng mới -->
+                        <div class="w-100"></div>
                         <div class="form-group">
                             <input class="btn btn-secondary mt-2" name="butadd" type="submit" value="Thêm">
                             <input class="btn btn-secondary mt-2" name="butupdate" type="submit" value="Cập nhật">

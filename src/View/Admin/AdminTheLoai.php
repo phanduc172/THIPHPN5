@@ -1,3 +1,7 @@
+<?php
+include '../../Model/TheLoaiModel.php';
+$ds = getAllTheloai();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,10 +64,10 @@
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <div>
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="AdminNguoiDungController">Người dùng</a>
-                                        <a class="nav-link" href="AdminTruyenController">Truyện</a>
-                                        <a class="nav-link" href="AdminTacGiaController">Tác giả</a>
-                                        <a class="nav-link" href="AdminTheLoaiController">Thể loại</a>
+                                        <a class="nav-link" href="../../Controller/NguoiDungController.php">Người dùng</a>
+                                        <a class="nav-link" href="../../Controller/TruyenController.php">Truyện</a>
+                                        <a class="nav-link" href="../../Controller/TacGiaController.php">Tác giả</a>
+                                        <a class="nav-link" href="../../Controller/TheLoaiController.php">Thể loại</a>
                                     </nav>
                                 </div>
                             </nav>
