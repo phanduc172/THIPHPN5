@@ -37,7 +37,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="AdminTrangChuController">
+                        <a class="nav-link" href="../../Controller/TruyenAdminController.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Tổng quát
                         </a>
@@ -51,10 +51,10 @@
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <div>
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="AdminNguoiDungController">Người dùng</a>
-                                        <a class="nav-link" href="AdminTruyenController">Truyện</a>
-                                        <a class="nav-link" href="AdminTacGiaController">Tác giả</a>
-                                        <a class="nav-link" href="AdminTheLoaiController">Thể loại</a>
+                                        <a class="nav-link" href="../../Controller/NguoiDungController.php">Người dùng</a>
+                                        <a class="nav-link" href="../../Controller/TruyenAdminController.php">Truyện</a>
+                                        <a class="nav-link" href="../../Controller/TacGiaController.php">Tác giả</a>
+                                        <a class="nav-link" href="../../Controller/TheLoaiController.php">Thể loại</a>
                                     </nav>
                                 </div>
                             </nav>

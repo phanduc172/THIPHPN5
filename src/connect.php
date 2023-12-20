@@ -4,7 +4,7 @@ if (!function_exists('connectDB')) {
         $host = 'localhost';
         $dbname = 'doctruyen';
         $username = 'root';
-        $password = 'root123456';
+        $password = '123456';
 
         try {
             $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

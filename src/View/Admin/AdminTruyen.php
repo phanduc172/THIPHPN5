@@ -17,7 +17,7 @@ session_start();
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="AdminTrangChuController"> <img width="50px" alt="" src="../../../assets/img-truyen/logo-pd.png"> </a>
         <!-- Sidebar Toggle-->
@@ -47,7 +47,7 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="../../Controller/AdminTrangChuController.php">
+                        <a class="nav-link" href="../../Controller/TruyenAdminController.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Tổng quát
                         </a>
@@ -62,7 +62,7 @@ session_start();
                                 <div>
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="../../Controller/NguoiDungController.php">Người dùng</a>
-                                        <a class="nav-link" href="../../Controller/TruyenController.php">Truyện</a>
+                                        <a class="nav-link" href="../../Controller/TruyenAdminController.php">Truyện</a>
                                         <a class="nav-link" href="../../Controller/TacGiaController.php">Tác giả</a>
                                         <a class="nav-link" href="../../Controller/TheLoaiController.php">Thể loại</a>
                                     </nav>

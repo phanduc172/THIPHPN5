@@ -1,6 +1,14 @@
 <?php
 	include '../../Model/TruyenModel.php';
 	include '../../Model/TheLoaiModel.php';
+
+	$matheloai = isset($_GET['mtl']) ? $_GET['mtl'] : null;
+	if ($matheloai !== null) {
+		$dstruyenid = getTruyenTheoMaTheLoai($matheloai);
+	} else {
+		echo 'Story ID not provided in the URL.';
+	}
+
 	$dstruyen = getAllTruyen();
 	$dstheloai = getAllTheloai();
 ?>
@@ -25,7 +33,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="../../Controller/TruyenController.php" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="TruyenController" class="nav-item nav-link active">Trang chủ</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Thể loại</a>
                         <div class="dropdown-menu" style="width: 200px;">
@@ -166,14 +174,14 @@
 
                     <h5 class="text-danger fw-bold text-center my-2">Danh sách truyện</h5>
                     <ul id="content" class="row truyen-items" style="list-style: none;">
-						<?php foreach ($dstruyen as $truyen) : ?>
+						<?php foreach ($dstruyenid as $truyentl) : ?>
 							<li class="httruyen col col-ms-6 col-md-6 col-lg-4 truyen-item mb-1">
-								<img class="my-1 truyen-img" src="../../../assets/<?= $truyen["anh"]?>" alt="Ảnh truyện">
-								<a href="../../Controller/TruyenController.php?mt=<?= $truyen['matruyen']?>" class="text-decoration-none">
-									<h6 class="mt-1"><?= $truyen['tentruyen']; ?></h6>
+								<img class="my-1 truyen-img" src="../../../assets/<?= $truyentl["anh"]?>" alt="Ảnh truyện">
+								<a href="../../Controller/TruyenController.php?mt=<?= $truyentl['matruyen']?>" class="text-decoration-none">
+									<h6 class="mt-1"><?= $truyentl['tentruyen']; ?></h6>
 								</a>
-								<p>Tác giả: <?= $truyen['tentacgia']; ?></p>
-								<p>Thể loại: <?= $truyen['tentheloai']; ?></p>
+								<p>Tác giả: <?= $truyentl['tentacgia']; ?></p>
+								<p>Thể loại: <?= $truyentl['tentheloai']; ?></p>
 							</li>
 						<?php endforeach; ?>
 					</ul>

@@ -16,9 +16,9 @@ $ds = getAllNguoiDung();
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="AdminTrangChuController"> <img width="50px" alt="" src="../../assets/img-truyen/logo-pd.png"> </a>
+        <a class="navbar-brand ps-3" href="AdminTrangChuController"> <img width="50px" alt="" src="../../../assets/img-truyen/logo-pd.png"> </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -46,7 +46,7 @@ $ds = getAllNguoiDung();
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="AdminTrangChuController">
+                        <a class="nav-link" href="../../Controller/TruyenAdminController.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Tổng quát
                         </a>
@@ -61,7 +61,7 @@ $ds = getAllNguoiDung();
                                 <div>
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="../../Controller/NguoiDungController.php">Người dùng</a>
-                                        <a class="nav-link" href="../../Controller/TruyenController.php">Truyện</a>
+                                        <a class="nav-link" href="../../Controller/TruyenAdminController.php">Truyện</a>
                                         <a class="nav-link" href="../../Controller/TacGiaController.php">Tác giả</a>
                                         <a class="nav-link" href="../../Controller/TheLoaiController.php">Thể loại</a>
                                     </nav>
