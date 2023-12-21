@@ -77,7 +77,7 @@ session_start();
                     <div class="container-fluid px-4">
                         <h2 class="mt-4">Quản lý truyện</h2>
                         <p class="text-danger mt-1 fw-bold">* Thêm truyện không cần nhập mã truyện</p>
-                        <form action="../../Controller/TruyenController.php" method="get" class="form-inline d-flex justify-content-start align-items-start flex-wrap">
+                        <form action="../../Controller/TruyenAdminController.php" method="get" class="form-inline d-flex justify-content-start align-items-start flex-wrap">
                             <div class="form-group me-2">
                                 <label for="txtmatruyen">Mã truyện:</label>
                                 <input name="txtmatruyen" type="text" class="form-control mt-1" placeholder="Nhập mã truyện">
@@ -146,7 +146,7 @@ session_start();
                                                 <td><?php echo $key['mota']; ?></td>
                                                 <td><?php echo $key['matacgia']; ?></td>
                                                 <td><?php echo $key['matheloai']; ?></td>
-                                                <td><a href="../../Controller/TruyenController.php?mtr=<?php echo $key['matruyen']; ?>&delete=xoa">Xóa</a> </td>
+                                                <td><a href="../../Controller/TruyenAdminController.php?mtr=<?php echo $key['matruyen']; ?>&delete=xoa">Xóa</a> </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -157,9 +157,6 @@ session_start();
                 </main>
                 <footer class="mt-3 bg-dark text-white fw-bold fs-5 text-center py-3">
                     <p class="m-0">&copy; 2023 No CopyRight</p>
-                    <p class="m-0">Mã sinh viên: 20T1020019</p>
-                    <p class="m-0">Tên: Phan Đức</p>
-                    <p class="m-0">Email: <a class="text-decoration-none text-white" href="mailto:20t1020019@husc.edu">20t1020019@husc.edu</a></p>
                 </footer>
             </div>
     </div>
