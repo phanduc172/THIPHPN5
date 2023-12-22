@@ -133,9 +133,6 @@
             </main>
             <footer class="bg-dark text-white fw-bold fs-5 text-center py-3">
                 <p class="m-0">&copy; 2023 No CopyRight</p>
-                <p class="m-0">Mã sinh viên: 20T1020019</p>
-                <p class="m-0">Tên: Phan Đức</p>
-                <p class="m-0">Email: <a class="text-decoration-none text-white" href="mailto:20t1020019@husc.edu">20t1020019@husc.edu</a></p>
             </footer>
         </div>
     </div>

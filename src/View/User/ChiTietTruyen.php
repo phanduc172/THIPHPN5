@@ -2,6 +2,9 @@
 include '../../Model/TruyenModel.php';
 include '../../Model/TheLoaiModel.php';
 
+$dstruyen = getAllTruyen();
+$dstheloai = getAllTheloai();
+
 $matruyen = isset($_GET['id']) ? $_GET['id'] : null;
 if ($matruyen !== null) {
     $dstruyenid = getTruyenTheoID($matruyen);
@@ -25,38 +28,36 @@ if ($matruyen !== null) {
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light fw-bold mb-3 position-fixed start-0 end-0" style="z-index:1080">
         <div class="container-fluid">
-        	<a href="TruyenController"><img class="logo-pd" alt="" src="/assets/img-truyen/logo-pd.png"></a>
+        	<a href="../../Controller/TruyenController.php"><img class="logo-pd" alt="" src="/assets/img-truyen/logo-pd.png"></a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="TruyenController" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="../../Controller/TruyenController.php" class="nav-item nav-link active">Trang chủ</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Thể loại</a>
                         <div class="dropdown-menu" style="width: 200px;">
                         	<ul class="px-3 theloai-items" style="list-style: none;">
-								
-								<!-- Replace the following loop with your equivalent logic in the backend -->
-								<!-- Example: foreach (theloaibean theloai in dstheloai) { -->
-									<li class="py-2">
-										<i class="bi bi-tags-fill"></i>
-										<a class="text-decoration-none" href="TruyenController?mtl=theloai.getMatheloai()">
-											theloai.getTentheloai()
+								<?php foreach ($dstheloai as $theloai) : ?>
+									<li class="mb-2 p-1">
+										<i class="bi bi-tags-fill text-secondary"></i>
+										<a class="text-decoration-none text-primary" href="../../Controller/TruyenController.php?mtl=<?= $theloai['matheloai'] ?>">
+											<?= $theloai['tentheloai'] ?>
 										</a>
 									</li>
-								<!-- Example: } -->
-                       		</ul>
+								<?php endforeach; ?>
+							</ul>
                         </div>
                     </div>
-                  <a href="#" class="nav-item nav-link">Đăng truyện</a>
+					<a href="../../Controller/AdminDangNhapController.php" class="nav-item nav-link bg-danger rounded-pill text-white">Đăng truyện</a>
                 </div>
-                <form action="TruyenController" class="d-flex" method="get">
-                    <div class="input-group">
-                        <input name="txttim" type="text" class="form-control" placeholder="Tìm truyện,tác giả">
-                        <button name="but1" type="submit" class="btn btn-secondary"><i class="bi-search"></i></button>
-                    </div>
-                </form>
+                <form class="d-flex" action="../../Controller/TruyenController.php" method="GET">
+					<div class="input-group">
+						<input name="tuKhoa" type="text" class="form-control" placeholder="Tìm truyện, tác giả">
+						<button name="but1" type="submit" class="btn btn-secondary"><i class="bi-search"></i></button>
+					</div>
+				</form>
                 <div class="navbar-nav">
 				    <button type="button" class="btn btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">
 				        <i class="bi bi-person-circle"></i> Thành viên

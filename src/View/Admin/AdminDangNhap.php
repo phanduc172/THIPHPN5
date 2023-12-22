@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="login-form d-flex justify-content-center align-items-center vh-100">
-        <form action="AdminDangNhapController" method="post" class="p-4 bg-light rounded-lg" style="width: 400px;">
+        <form action="../../Controller/AdminDangNhapController.php" method="post" class="p-4 bg-light rounded-lg" style="width: 400px;">
             <div class="d-flex justify-content-center mb-2">
                 <img src="../../../assets/img-truyen/logo-pd.png" alt="Avatar" class="w-25 p-2">
             </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="mb-1">
                 <p class="m-0">Nếu bạn là Thành viên.</p>
-                <p>Vui lòng đăng nhập <a href="TruyenController">tại đây</a></p>
+                <p>Vui lòng đăng nhập <a href="../../Controller/TruyenController.php">tại đây</a></p>
             </div>
         </form>
     </div>

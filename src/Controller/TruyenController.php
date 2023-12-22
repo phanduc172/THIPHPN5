@@ -9,17 +9,20 @@ if (isset($_GET['mt'])) {
 } elseif (isset($_GET['mtl'])) {
     $matheloai = $_GET['mtl'];
     $dstruyentheotheloai = getTruyenTheoMaTheLoai($matheloai);
-
-    // Check if there are stories in the selected genre
     if ($dstruyentheotheloai) {
-        // Redirect to the view with the list of stories based on the genre
         header('Location: ../View/User/TruyenTheoTheLoai.php?mtl='.$matheloai);
     } else {
-        // No stories found in the selected genre, redirect to home page or show an error
         header('Location: ../View/User/TrangChu.php');
     }
+} elseif (isset($_GET['tuKhoa'])) {
+    // Xử lý truy vấn tìm kiếm
+    $tuKhoa = $_GET['tuKhoa'];
+    $ketQuaTimKiem = timKiemTruyenVaTacGia($tuKhoa);
+
+    if ($ketQuaTimKiem) {
+        header('Location: ../View/User/DanhSachTimKiem.php?tuKhoa='.$tuKhoa);
+    }
 } else {
-    // No genre ID provided, redirect to home page
     header('Location: ../View/User/TrangChu.php');
 }
 ?>

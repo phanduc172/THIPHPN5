@@ -47,8 +47,27 @@ function getTruyenTheoMaTheLoai($matheloai) {
         echo 'Lỗi truy vấn: ' . $e->getMessage();
         return null;
     } finally {
-        // Close the connection
         $conn = null;
     }
 }
+
+function timKiemTruyenVaTacGia($tuKhoa)
+{
+    try {
+        $conn = connectDB();
+        $query = $conn->prepare("
+            SELECT * FROM doctruyen.v_httruyen
+            where tentruyen LIKE :tuKhoa or tentacgia LIKE :tuKhoa");
+        $tuKhoaParam = '%' . $tuKhoa . '%';
+        $query->bindParam(':tuKhoa', $tuKhoaParam, PDO::PARAM_STR);
+        $query->execute();
+        $ketQua = $query->fetchAll(PDO::FETCH_ASSOC);
+        unset($conn);
+        return $ketQua;
+    } catch (PDOException $e) {
+        error_log("Lỗi Cơ sở dữ liệu: " . $e->getMessage());
+        return [];
+    }
+}
+
 ?>

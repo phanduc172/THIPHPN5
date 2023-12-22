@@ -1,8 +1,19 @@
 <?php
 	include '../../Model/TruyenModel.php';
 	include '../../Model/TheLoaiModel.php';
-	$dstruyen = getAllTruyen();
+    $dstruyen = getAllTruyen();
 	$dstheloai = getAllTheloai();
+
+	$tuKhoa = isset($_GET['tuKhoa']) ? $_GET['tuKhoa'] : null;
+
+	if ($tuKhoa !== null) {
+		$dstruyentiemkiem = timKiemTruyenVaTacGia($tuKhoa);
+	} else {
+		echo 'Từ khóa tìm kiếm không được cung cấp trong URL.';
+	}
+	if (empty($dstruyentiemkiem)) {
+		echo 'Không có kết quả tìm kiếm.';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -170,14 +181,14 @@
 
                     <h5 class="text-danger fw-bold text-center my-2">Danh sách truyện</h5>
                     <ul id="content" class="row truyen-items" style="list-style: none;">
-						<?php foreach ($dstruyen as $truyen) : ?>
+						<?php foreach ($dstruyentiemkiem as $truyentk) : ?>
 							<li class="httruyen col col-ms-6 col-md-6 col-lg-4 truyen-item mb-1">
-								<img class="my-1 truyen-img" src="../../../assets/<?= $truyen["anh"]?>" alt="Ảnh truyện">
-								<a href="../../Controller/TruyenController.php?mt=<?= $truyen['matruyen']?>" class="text-decoration-none">
-									<h6 class="mt-1"><?= $truyen['tentruyen']; ?></h6>
+								<img class="my-1 truyen-img" src="../../../assets/<?= $truyentk["anh"]?>" alt="Ảnh truyện">
+								<a href="../../Controller/TruyenController.php?mt=<?= $truyentk['matruyen']?>" class="text-decoration-none">
+									<h6 class="mt-1"><?= $truyentk['tentruyen']; ?></h6>
 								</a>
-								<p>Tác giả: <?= $truyen['tentacgia']; ?></p>
-								<p>Thể loại: <?= $truyen['tentheloai']; ?></p>
+								<p>Tác giả: <?= $truyentk['tentacgia']; ?></p>
+								<p>Thể loại: <?= $truyentk['tentheloai']; ?></p>
 							</li>
 						<?php endforeach; ?>
 					</ul>
