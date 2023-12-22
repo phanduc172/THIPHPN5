@@ -4,7 +4,8 @@ include '../../Model/TheLoaiModel.php';
 
 $dstruyen = getAllTruyen();
 $dstheloai = getAllTheloai();
-
+session_start();
+$dn = isset($_SESSION['dn']) ? $_SESSION['dn'] : null;
 $matruyen = isset($_GET['id']) ? $_GET['id'] : null;
 if ($matruyen !== null) {
     $dstruyenid = getTruyenTheoID($matruyen);
@@ -60,10 +61,14 @@ if ($matruyen !== null) {
 				</form>
                 <div class="navbar-nav">
 				    <button type="button" class="btn btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">
-				        <i class="bi bi-person-circle"></i> Thành viên
+					<?php if(isset($dn) && $dn != null): ?>
+						<i class="bi bi-person-circle"></i> <?= $dn['hoten'] ?>
+					<?php else: ?>
+						<i class="bi bi-person-circle"></i> Thành viên
+					<?php endif; ?>
 				    </button>
 			        <li class="text-secondary me-2"><i class="bi bi-person-circle me-2"></i><!-- Replace with dynamic data --></li>
-			        <a class="text-decoration-none text-danger" href="DangXuatController">Đăng xuất</a>
+			        <a class="text-decoration-none text-danger" href="../../Controller/UserDangXuatController.php">Đăng xuất</a>
 				</div>
 				<!-- The Modal -->
 				<div class="modal" id="myModal">

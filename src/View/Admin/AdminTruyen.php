@@ -41,7 +41,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="AdminDangXuatController">Đăng xuất</a></li>
+                    <li><a class="dropdown-item" href="../../Controller/AdminDangXuatController.php">Đăng xuất</a></li>
                 </ul>
             </li>
         </ul>

@@ -1,6 +1,5 @@
 <?php
-include '../../Model/NguoiDungModel.php';
-$ds = getAllNguoiDung();
+$ds = isset($_GET['ds']) ? json_decode($_GET['ds'], true) : array();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,7 +117,7 @@ $ds = getAllNguoiDung();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($ds as $nd): ?>
+                                    <?php foreach ((array) $ds as $nd): ?>
                                         <tr>
                                             <td><?= $nd['manguoidung'] ?></td>
                                             <td><?= $nd['hoten'] ?></td>
@@ -138,5 +137,11 @@ $ds = getAllNguoiDung();
             </footer>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    <script src="js/thongke.js"></script>   
 </body>
 </html>

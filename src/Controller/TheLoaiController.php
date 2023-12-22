@@ -17,5 +17,6 @@
         xoaTheloai($matheloai);
 
     }
-    header('Location: ../View/Admin/AdminTheLoai.php');
+    $ds = getAllTheloai();
+    header('Location: ../View/Admin/AdminTheLoai.php?ds=' . urlencode(json_encode($ds)));
 ?>

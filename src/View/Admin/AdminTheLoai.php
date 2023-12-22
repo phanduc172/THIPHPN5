@@ -1,6 +1,5 @@
 <?php
-include '../../Model/TheLoaiModel.php';
-$ds = getAllTheloai();
+$ds = isset($_GET['ds']) ? json_decode($_GET['ds'], true) : array();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +110,7 @@ $ds = getAllTheloai();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($ds as $theLoai): ?>
+                                    <?php foreach ((array) $ds as $theLoai): ?>
                                         <tr>
                                             <td><?= $theLoai['matheloai'] ?></td>
                                             <td><?= $theLoai['tentheloai'] ?></td>

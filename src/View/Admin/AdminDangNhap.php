@@ -25,7 +25,7 @@
             </div>
             <div class="mb-1">
                 <p class="m-0">Nếu bạn là Thành viên.</p>
-                <p>Vui lòng đăng nhập <a href="../../Controller/TruyenController.php">tại đây</a></p>
+                <p>Vui lòng đăng nhập <a href="../../Controller/UserDangNhapController.php">tại đây</a></p>
             </div>
         </form>
     </div>

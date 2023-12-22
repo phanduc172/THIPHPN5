@@ -23,5 +23,6 @@
         $manguoidung = $_GET['mnd'];
         xoaNguoiDung($manguoidung);
     }
-    header('Location: ../View/Admin/AdminNguoiDung.php');
+    $dsNguoidung = getAllNguoiDung();
+    header('Location: ../View/Admin/AdminNguoiDung.php?ds=' . urlencode(json_encode($dsNguoidung)));
 ?>
