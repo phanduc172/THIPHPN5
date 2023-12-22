@@ -54,15 +54,17 @@
 
 
 			    <div class="navbar-nav">
-				    <button type="button" class="btn btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">
+					<button type="button" class="btn btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">
+						<?php if(isset($dn) && $dn != null): ?>
+							<i class="bi bi-person-circle"></i> <?= $dn['hoten'] ?>
+						<?php else: ?>
+							<i class="bi bi-person-circle"></i> Thành viên
+						<?php endif; ?>
+					</button>
 					<?php if(isset($dn) && $dn != null): ?>
-						<i class="bi bi-person-circle"></i> <?= $dn['hoten'] ?>
-					<?php else: ?>
-						<i class="bi bi-person-circle"></i> Thành viên
+						<li style="margin-top: 7px;" class="text-secondary me-2"><i class="bi bi-person-circle me-2"></i></li>
+						<a style="margin-top: 7px;" class="text-decoration-none text-danger" href="../../Controller/UserDangXuatController.php">Đăng xuất</a>
 					<?php endif; ?>
-				    </button>
-			        <li class="text-secondary me-2"><i class="bi bi-person-circle me-2"></i></li>
-			        <a class="text-decoration-none text-danger" href="../../Controller/UserDangXuatController.php">Đăng xuất</a>
 				</div>
 			    <!-- The Modal -->
 				<div class="modal" id="myModal">

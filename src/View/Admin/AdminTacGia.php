@@ -20,7 +20,7 @@ $ds = isset($_GET['ds']) ? json_decode($_GET['ds'], true) :array();
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="AdminTrangChuController"> <img width="50px" alt="" src="img-truyen/logo-pd.png"> </a>
+        <a class="navbar-brand ps-3" href="../../Controller/AdminTrangChuController.php"> <img width="50px" alt="" src="../../../assets/img-truyen/logo-pd.png"> </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -35,7 +35,6 @@ $ds = isset($_GET['ds']) ? json_decode($_GET['ds'], true) :array();
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Cài đặt</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -50,7 +49,7 @@ $ds = isset($_GET['ds']) ? json_decode($_GET['ds'], true) :array();
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="../../Controller/TruyenAdminController.php">
+                        <a class="nav-link" href="../../Controller/AdminTrangChuController.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Tổng quát
                         </a>
@@ -134,9 +133,6 @@ $ds = isset($_GET['ds']) ? json_decode($_GET['ds'], true) :array();
             </main>
             <footer class="mt-3 bg-dark text-white fw-bold fs-5 text-center py-3">
                 <p class="m-0">&copy; 2023 No CopyRight</p>
-                <p class="m-0">Mã sinh viên: 20T1020019</p>
-                <p class="m-0">Tên: Phan Đức</p>
-                <p class="m-0">Email: <a class="text-decoration-none text-white" href="mailto:20t1020019@husc.edu">20t1020019@husc.edu</a></p>
             </footer>
         </div>
     </div>
