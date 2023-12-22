@@ -1,5 +1,5 @@
 <?php
-session_start();
+$ds = isset($_GET['ds']) ? json_decode($_GET['ds'], true) :array();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +79,7 @@ session_start();
             <main>
                 <div class="container-fluid px-4">
                     <h2 class="mt-4">Quản lý tác giả</h2>
-                    <form action="../../Controller/TacGiaController.php" method="get" class="form-inline d-flex justify-content-between align-items-center flex-wrap">
+                    <form action="../../Controller/TacGiaController.php" method="Post" class="form-inline d-flex justify-content-between align-items-center flex-wrap">
                         <div class="form-group">
                             <label for="txtmatacgia">Mã tác giả:</label>
                             <input name="txtmatacgia" type="text" class="form-control mt-1" placeholder="Nhập mã tác giả">
@@ -118,11 +118,11 @@ session_start();
                                 </thead>
                                 <tbody>
                                     <?php $dstacgia = isset($_SESSION['dstacgia']) ? $_SESSION['dstacgia'] : []; ?>
-                                    <?php foreach ($dstacgia as $key) : ?>
+                                    <?php foreach ((array) $ds as $key): ?>
                                         <tr>
-                                            <td class="text-center"><?php echo $key['matacgia']; ?></td>
-                                            <td><?php echo $key['tentacgia']; ?></td>
-                                            <td><?php echo $key['quequan']; ?></td>
+                                            <td class="text-center"><?=$key['matacgia'] ?></td>
+                                            <td><?=$key['tentacgia'] ?></td>
+                                            <td><?=$key['quequan'] ?></td>
                                             <td><a href="../../Controller/TacgiaController.php?mtg=<?php echo $key['matacgia']; ?>&delete=xoa">Xóa</a> </td>
                                         </tr>
                                     <?php endforeach; ?>
