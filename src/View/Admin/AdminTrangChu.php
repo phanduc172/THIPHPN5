@@ -17,7 +17,7 @@
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="AdminTrangChuController"> <img width="50px" alt="" src="img-truyen/logo-pd.png"> </a>
+        <a class="navbar-brand ps-3" href="../../Controller/AdminTrangChuController.php"> <img width="50px" alt="" src="../../../assets/img-truyen/logo-pd.png"> </a>
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
@@ -41,7 +41,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="../../Controller/TruyenAdminController.php">
+                        <a class="nav-link" href="../../Controller/AdminTrangChuController.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Tổng quát
                         </a>

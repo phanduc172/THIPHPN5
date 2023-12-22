@@ -11,8 +11,9 @@ if (isset($_GET['mt'])) {
     $dstruyentheotheloai = getTruyenTheoMaTheLoai($matheloai);
     if ($dstruyentheotheloai) {
         header('Location: ../View/User/TruyenTheoTheLoai.php?mtl='.$matheloai);
-    } else {
-        header('Location: ../View/User/TrangChu.php');
+    }
+     else {
+        header('Location: ../View/User/TruyenTheoTheLoai.php');
     }
 } elseif (isset($_GET['tuKhoa'])) {
     // Xử lý truy vấn tìm kiếm
@@ -21,6 +22,8 @@ if (isset($_GET['mt'])) {
 
     if ($ketQuaTimKiem) {
         header('Location: ../View/User/DanhSachTimKiem.php?tuKhoa='.$tuKhoa);
+    } else {
+        header('Location: ../View/User/DanhSachTimKiem.php?');
     }
 } else {
     header('Location: ../View/User/TrangChu.php');

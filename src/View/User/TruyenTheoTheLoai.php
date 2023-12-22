@@ -1,14 +1,10 @@
 	<?php
 		include '../../Model/TruyenModel.php';
 		include '../../Model/TheLoaiModel.php';
-
 		$matheloai = isset($_GET['mtl']) ? $_GET['mtl'] : null;
 		if ($matheloai !== null) {
 			$dstruyenid = getTruyenTheoMaTheLoai($matheloai);
-		} else {
-			echo 'Story ID not provided in the URL.';
 		}
-
 		$dstruyen = getAllTruyen();
 		$dstheloai = getAllTheloai();
 	?>
@@ -59,11 +55,17 @@
 				</form>
 
 			    <div class="navbar-nav">
-				    <button type="button" class="btn btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">
-				        <i class="bi bi-person-circle"></i> Thành viên
-				    </button>
-			        <li class="text-secondary me-2"><i class="bi bi-person-circle me-2"></i></li>
-			        <a class="text-decoration-none text-danger" href="DangXuatController">Đăng xuất</a>
+					<button type="button" class="btn btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">
+						<?php if(isset($dn) && $dn != null): ?>
+							<i class="bi bi-person-circle"></i> <?= $dn['hoten'] ?>
+						<?php else: ?>
+							<i class="bi bi-person-circle"></i> Thành viên
+						<?php endif; ?>
+					</button>
+					<?php if(isset($dn) && $dn != null): ?>
+						<li style="margin-top: 7px;" class="text-secondary me-2"><i class="bi bi-person-circle me-2"></i></li>
+						<a style="margin-top: 7px;" class="text-decoration-none text-danger" href="../../Controller/UserDangXuatController.php">Đăng xuất</a>
+					<?php endif; ?>
 				</div>
 			    <!-- The Modal -->
 				<div class="modal" id="myModal">
@@ -88,37 +90,29 @@
 
 				                <div class="tab-content mt-3">
 				                    <div id="loginForm" class="tab-pane fade show active">
-				                        <form method="post" action="DangNhapController">
+				                        <form method="post" action="../../Controller/UserDangNhapController.php">
 								            <fieldset>
 								                <div class="form-group mb-3">
-								                	<input class="form-control" placeholder="Nhập tên người dùng" name="username" type="text">
+								                	<input class="form-control" placeholder="Nhập tên người dùng" name="txttk" type="text">
 								                </div>
 								                <div class="form-group mb-3">
-								              	  <input class="form-control" placeholder="Nhập mật khẩu" name="password" type="password" value="">
-								                </div>
-								                <div class="form-group mb-3">
-								              	  	<img src="simpleCaptcha.jpg" />
-								              	 	<input type="text" name="answer" placeholder="Nhập mã CAPTCHA"/><br>
+								              	  <input class="form-control" placeholder="Nhập mật khẩu" name="txtmk" type="password" value="">
 								                </div>
 								                <input class="btn btn-md btn btn-secondary btn-block" type="submit" value="Đăng nhập">
 								            </fieldset>
 							            </form>
 				                    </div>
 				                    <div id="registerForm" class="tab-pane fade">
-				                        <form method="post" action="DangKyController">
+				                        <form method="post" action="../../Controller/UserDangKyController.php">
 								            <fieldset>
 								           		<div class="form-group mb-3">
-								                	<input class="form-control" placeholder="Nhập họ tên" name="dkhoten" type="text">
+								                	<input class="form-control" placeholder="Nhập họ tên" name="txtht" type="text">
 								                </div>
 								                <div class="form-group mb-3">
-								                	<input class="form-control" placeholder="Nhập tên đăng nhập" name="dktendangnhap" type="text">
+								                	<input class="form-control" placeholder="Nhập tên đăng nhập" name="txttk" type="text">
 								                </div>
 								                <div class="form-group mb-3">
-								              	  <input class="form-control" placeholder="Nhập mật khẩu" type="password" name="dkmatkhau" value="">
-								                </div>
-				            				   	<div class="form-group mb-3">
-								              	  	<img src="simpleCaptcha.jpg" />
-								              	 	<input type="text" name="answer" placeholder="Nhập mã CAPTCHA"/><br>
+								              	  <input class="form-control" placeholder="Nhập mật khẩu" type="password" name="txtmk" value="">
 								                </div>
 								                <input class="btn btn-md btn btn-secondary btn-block" type="submit" value="Đăng ký">
 								            </fieldset>
@@ -177,17 +171,22 @@
 
                     <h5 class="text-danger fw-bold text-center my-2">Danh sách truyện</h5>
                     <ul id="content" class="row truyen-items" style="list-style: none;">
-						<?php foreach ($dstruyenid as $truyentl) : ?>
-							<li class="httruyen col col-ms-6 col-md-6 col-lg-4 truyen-item mb-1">
-								<img class="my-1 truyen-img" src="../../../assets/<?= $truyentl["anh"]?>" alt="Ảnh truyện">
-								<a href="../../Controller/TruyenController.php?mt=<?= $truyentl['matruyen']?>" class="text-decoration-none">
-									<h6 class="mt-1"><?= $truyentl['tentruyen']; ?></h6>
-								</a>
-								<p>Tác giả: <?= $truyentl['tentacgia']; ?></p>
-								<p>Thể loại: <?= $truyentl['tentheloai']; ?></p>
-							</li>
-						<?php endforeach; ?>
+						<?php if (!empty($dstruyenid)) : ?>
+							<?php foreach ($dstruyenid as $truyentl) : ?>
+								<li class="httruyen col col-ms-6 col-md-6 col-lg-4 truyen-item mb-1">
+									<img class="my-1 truyen-img" src="../../../assets/<?= $truyentl["anh"]?>" alt="Ảnh truyện">
+									<a href="../../Controller/TruyenController.php?mt=<?= $truyentl['matruyen']?>" class="text-decoration-none">
+										<h6 class="mt-1"><?= $truyentl['tentruyen']; ?></h6>
+									</a>
+									<p>Tác giả: <?= $truyentl['tentacgia']; ?></p>
+									<p>Thể loại: <?= $truyentl['tentheloai']; ?></p>
+								</li>
+							<?php endforeach; ?>
+						<?php else : ?>
+							<h4 class="text-danger">Không tìm thấy truyện cho thể loại này.</h4>
+						<?php endif; ?>
 					</ul>
+
 
 					
                 </div>
