@@ -1,5 +1,6 @@
 <?php
-    include '../../connect.php';
+        include '../../connect.php';
+
 
     function getAllTheloai() {
         $conn = connectDB();
@@ -60,7 +61,6 @@
     }
     function tongTheLoai() {
         $conn = connectDB();
-
         try {
             $query = $conn->query("SELECT COUNT(matheloai) AS total FROM theloai");
             $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -72,4 +72,22 @@
             $conn = null;
         }
     }
+    function timKiemTL($tentheloai) {
+        try {
+            $conn = connectDB();
+            $tkiem = '%' . $tentheloai . '%';
+    
+            $query = $conn->prepare("SELECT * FROM theloai WHERE tentheloai LIKE :tentheloai");
+            $query->bindParam(':tentheloai', $tkiem, PDO::PARAM_STR);
+            $query->execute();
+    
+            $ketQua = $query->fetchAll(PDO::FETCH_ASSOC);
+            unset($conn);
+            return $ketQua;
+        } catch (PDOException $e) {
+            echo 'Lỗi truy vấn: ' . $e->getMessage();
+            return false;
+        }
+    }
+    
 ?>

@@ -1,6 +1,8 @@
 <?php 
-    session_start();
-    $ad = $_SESSION['ad'];
+    $tongTg = isset($_GET['tongTg']) ? $_GET['tongTg'] : 0;
+    $tongT = isset($_GET['tongT']) ? $_GET['tongT'] : 0;
+    $tongTl = isset($_GET['tongTl']) ? $_GET['tongTl'] : 0;
+    $tongNd = isset($_GET['tongNd']) ? $_GET['tongNd'] : 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,19 +84,19 @@
                                     <table class="table table-hover">
                                         <tr>
                                             <th>Tổng số tác giả</th>
-                                            <td><%= tongTacGia %></td>
+                                            <td><?= $tongTg ?></td>
                                         </tr>
                                         <tr>
                                             <th>Tổng số truyện</th>
-                                            <td><%= tongTruyen %></td>
+                                            <td><?= $tongT ?></td>
                                         </tr>
                                         <tr>
                                             <th>Tổng số thể loại</th>
-                                            <td><%= tongTheLoai %></td>
+                                            <td><?= $tongTl ?></td>
                                         </tr>
                                         <tr>
                                             <th>Tổng số người dùng</th>
-                                            <td><%= tongNguoiDung %></td>
+                                            <td><?= $tongNd ?></td>
                                         </tr>
                                     </table>
                                 </div>

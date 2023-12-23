@@ -1,5 +1,5 @@
 <?php
-    include '../../connect.php';
+    include '../connect.php';
 
     function KtDangNhap($taikhoanadmin, $matkhauadmin) {
         $conn = connectDB();

@@ -75,5 +75,21 @@
             $conn = null;
         }
     }
-
+    function timKiemND($hoten) {
+        try {
+            $conn = connectDB();
+            $tkiem = '%' . $hoten . '%';
+    
+            $query = $conn->prepare("SELECT * FROM nguoidung WHERE hoten LIKE :hoten");
+            $query->bindParam(':hoten', $tkiem, PDO::PARAM_STR);
+            $query->execute();
+    
+            $ketQua = $query->fetchAll(PDO::FETCH_ASSOC);
+            unset($conn);
+            return $ketQua;
+        } catch (PDOException $e) {
+            echo 'Lỗi truy vấn: ' . $e->getMessage();
+            return false;
+        }
+    }
 ?>

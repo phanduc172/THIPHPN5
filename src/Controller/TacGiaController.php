@@ -11,6 +11,11 @@
             $tentacgia = $_POST['txttentacgia'];
             $quequan = $_POST['txtquequan'];
             suaTacgia($matacgia, $tentacgia, $quequan);
+        }elseif (isset($_POST['key'])) {
+            $tkiem = $_POST['key'];
+            $ds = timKiem($tkiem);
+            header('Location: ../View/Admin/AdminTacgia.php?ds=' . urlencode(json_encode($ds)));
+            exit;
         }
     }
     if (isset($_GET['mtg'])) { 
@@ -18,6 +23,6 @@
         xoaTacgia($matacgia);
 
     }
-    $dsTacgia = getAllTacgia();
-    header('Location: ../View/Admin/AdminTacgia.php?ds=' . urlencode(json_encode($dsTacgia)));
+    $ds = getAllTacgia();
+    header('Location: ../View/Admin/AdminTacgia.php?ds=' . urlencode(json_encode($ds)));
 ?>

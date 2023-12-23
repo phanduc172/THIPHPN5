@@ -1,5 +1,5 @@
 <?php
-    include '../../connect.php';
+    include '../connect.php';
 
     function getAllTacgia() {
         $conn = connectDB();
@@ -73,4 +73,20 @@
             $conn = null;
         }
     }
+    function timKiem($key) {
+        try {
+            $conn = connectDB();
+            $query = $conn->prepare("SELECT * FROM tacgia WHERE tentacgia LIKE :key OR quequan LIKE :key");
+            $key = '%' . $key . '%';
+            $query->bindParam(':key', $key, PDO::PARAM_STR);
+            $query->execute();
+            $ketQua = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $ketQua;
+        } catch (PDOException $e) {
+            echo 'Lỗi truy vấn: ' . $e->getMessage();
+            return false;
+        }
+    }
+    
+    
 ?>

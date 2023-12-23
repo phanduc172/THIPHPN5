@@ -1,5 +1,6 @@
 <?php
-include '../../connect.php';
+    include '../../connect.php';
+
 
 function getAllTruyen() {
     $conn = connectDB();
@@ -69,5 +70,17 @@ function timKiemTruyenVaTacGia($tuKhoa)
         return [];
     }
 }
-
+function tongTruyen() {
+    $conn = connectDB();
+    try {
+        $query = $conn->query("SELECT COUNT(matruyen) AS total FROM truyen");
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result['total'] ?? 0;
+    } catch (PDOException $e) {
+        echo 'Lỗi truy vấn: ' . $e->getMessage();
+        return 0;
+    }   finally {
+        $conn = null;
+    }
+}
 ?>
