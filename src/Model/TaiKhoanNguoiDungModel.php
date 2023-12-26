@@ -1,5 +1,5 @@
 <?php
-    include '../../connect.php';
+    include '../connect.php';
 
     function ktdn($tendangnhap, $matkhau) {
         $conn = connectDB();
@@ -25,6 +25,20 @@
             $stmt->bindParam(':tendangnhap', $tendangnhap);
             $stmt->bindParam(':matkhau', $matkhau);
             $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Lỗi truy vấn: ' . $e->getMessage();
+        } finally {
+            $conn = null;
+        }
+    }
+    function kttk($tendangnhap) {
+        $conn = connectDB();
+        try {
+            $query = "SELECT * FROM nguoidung WHERE tendangnhap = :tendangnhap";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':tendangnhap', $tendangnhap);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo 'Lỗi truy vấn: ' . $e->getMessage();
         } finally {

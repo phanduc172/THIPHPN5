@@ -13,11 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['dn'] = $dn;
                 header('Location: ../View/User/TrangChu.php');
                 exit; 
-            } 
+            } else {
+                header('Location: ../View/User/TrangChu.php?error=dangnhap');
+                exit; 
+            }
         }
     }
 }
-
- header('Location: ../View/User/UserDangNhap.php');
- exit;
+header('Location: ../View/User/TrangChu.php');
+exit; 
 ?>

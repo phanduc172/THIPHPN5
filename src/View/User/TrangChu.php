@@ -5,6 +5,14 @@
 	$dstheloai = getAllTheloai();
 	session_start();
 	$dn = isset($_SESSION['dn']) ? $_SESSION['dn'] : null;
+	if (isset($_GET['error'])) {
+		echo '<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+				myModal.show();
+			});
+		</script>';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -51,8 +59,6 @@
 						<button name="but1" type="submit" class="btn btn-secondary"><i class="bi-search"></i></button>
 					</div>
 				</form>
-
-
 			    <div class="navbar-nav">
 					<button type="button" class="btn btn btn-light" data-bs-toggle="modal" data-bs-target="#myModal">
 						<?php if(isset($dn) && $dn != null): ?>
@@ -98,7 +104,12 @@
 								              	  <input class="form-control" placeholder="Nhập mật khẩu" name="txtmk" type="password" value="">
 								                </div>
 								                <input class="btn btn-md btn btn-secondary btn-block" type="submit" value="Đăng nhập">
-								            </fieldset>
+								            	<?php if (isset($_GET['error']) && $_GET['error'] === 'dangnhap') { ?>
+													<div class="alert alert-danger mt-2">
+														<strong>Tên đăng nhập hoặc mật khẩu khôg đúng!</strong>
+													</div>
+												<?php } ?>
+											</fieldset>
 							            </form>
 				                    </div>
 				                    <div id="registerForm" class="tab-pane fade">
@@ -114,7 +125,12 @@
 								              	  <input class="form-control" placeholder="Nhập mật khẩu" type="password" name="txtmk" value="">
 								                </div>
 								                <input class="btn btn-md btn btn-secondary btn-block" type="submit" value="Đăng ký">
-								            </fieldset>
+								            	<?php if (isset($_GET['error']) && $_GET['error'] === 'dangky') { ?>
+													<div class="alert alert-danger mt-2">
+														<strong>Tên đăng nhập đã tồn tại!</strong>
+													</div>
+												<?php } ?>
+											</fieldset>
 							            </form>
 				                    </div>
 				                </div>

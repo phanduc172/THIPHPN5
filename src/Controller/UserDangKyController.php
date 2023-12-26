@@ -7,9 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ht = $_POST['txtht'];
         $tk = $_POST['txttk'];
         $mk = $_POST['txtmk'];
-        DangKy($ht, $tk, $mk);
-        header('Location: ../View/User/UserDangNhap.php');
-        exit; 
+        if(!kttk($tk)) {
+            DangKy($ht, $tk, $mk);
+        } else {
+            header('Location: ../View/User/TrangChu.php?error=dangky');
+            exit; 
+        }
+    }
 }
-}
+header('Location: ../View/User/TrangChu.php');
+exit; 
 ?>
