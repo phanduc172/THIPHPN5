@@ -19,6 +19,7 @@
     <link href="../../../assets/css/adminstyles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -156,6 +157,58 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-	<script src="../../../assets/js/thongke.js  "></script>
+    <script src="../../../assets/js/thongke.php"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.body.querySelector('#sidebarToggle');
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+                });
+            }
+
+            var tongTacGia = <?= $tongTg ?>;
+            var tongTruyen = <?= $tongT ?>;
+            var tongNguoiDung = <?= $tongTl ?>;
+            var tongTheLoai = <?= $tongNd ?>;
+
+            // Dữ liệu biểu đồ
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["Tác giả", "Truyện", "Người dùng", "Thể loại"],
+                    datasets: [{
+                        label: "Số lượng",
+                        data: [tongTacGia, tongTruyen, tongNguoiDung, tongTheLoai],
+                        backgroundColor: [
+                            "rgba(255, 99, 132, 0.2)",
+                            "rgba(54, 162, 235, 0.2)",
+                            "rgba(75, 192, 192, 0.2)",
+                            "rgba(255, 205, 86, 0.2)",
+                        ],
+                        borderColor: [
+                            "rgba(255, 99, 132, 1)",
+                            "rgba(54, 162, 235, 1)",
+                            "rgba(75, 192, 192, 1)",
+                            "rgba(255, 205, 86, 1)",
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
