@@ -7,6 +7,8 @@
 		}
 		$dstruyen = getAllTruyen();
 		$dstheloai = getAllTheloai();
+		session_start();
+		$dn = isset($_SESSION['dn']) ? $_SESSION['dn'] : null;
 	?>
 
 <!DOCTYPE html>
