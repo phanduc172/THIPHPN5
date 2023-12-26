@@ -83,4 +83,17 @@ function tongTruyen() {
         $conn = null;
     }
 }
+
+function getTruyenMoiNhat() {
+    $conn = connectDB();
+
+    try {
+        $query = $conn->query("SELECT * FROM Truyen ORDER BY matruyen DESC");
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        echo 'Lỗi truy vấn: ' . $e->getMessage();
+        return null;
+    }
+}
 ?>

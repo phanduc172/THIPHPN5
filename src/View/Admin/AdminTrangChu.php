@@ -3,6 +3,8 @@
     $tongT = isset($_GET['tongT']) ? $_GET['tongT'] : 0;
     $tongTl = isset($_GET['tongTl']) ? $_GET['tongTl'] : 0;
     $tongNd = isset($_GET['tongNd']) ? $_GET['tongNd'] : 0;
+    include "../../Model/TruyenModel.php";
+    $dstruyen = getAllTruyen();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../../../assets/css/adminstyles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -129,7 +132,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Your content here -->
+                                        <?php foreach ($dstruyen as $truyen) : ?>
+                                            <tr class="text-center">
+                                                <td><?= $truyen['matruyen']; ?></td>
+                                                <td class="text-start"><?= $truyen['tentruyen']; ?></td>
+                                                <td><?= $truyen['tentacgia']; ?></td>
+                                                <td><?= $truyen['tentheloai']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -146,7 +156,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <script src="js/datatables-simple-demo.js"></script>
-    <script src="js/thongke.js"></script>
+	<script src="../../../assets/js/thongke.js  "></script>
 </body>
 </html>
