@@ -11,8 +11,6 @@ $dn = isset($_SESSION['dn']) ? $_SESSION['dn'] : null;
 $matruyen = isset($_GET['id']) ? $_GET['id'] : null;
 if ($matruyen !== null) {
     $dstruyenid = getTruyenTheoID($matruyen);
-} else {
-    echo 'Story ID not provided in the URL.';
 }
 
 ?>
@@ -158,24 +156,16 @@ if ($matruyen !== null) {
 
     			<div class="truyenmoi bg-light col col-lg-3 ms-2 text-center">
 				    <h5 class="text-danger fw-bold text-center mt-2">Truyện mới nhất</h5>
-						<?php foreach ($dstruyennew as $truyennew) : ?>
-							<ul class="mb-2 p-1">
-								<a class="text-start text-decoration-none" href="../../Controller/TruyenController.php?mt=<?= $truyen['matruyen']?>" class="text-decoration-none">
-									<h6 class="mt-1 text-primary"><i class="bi bi-tags-fill m-2 text-secondary"></i><?= $truyennew['tentruyen']; ?></h6>
-								</a>
-								<a href="" class="text-decoration-none">
-									<h6 class="mt-1"></h6>
-								</a>
-							</ul>
-						<?php endforeach; ?>
-				    <ul class="p-0" style="list-style: none;">
-						<!-- Replace the following loop with your equivalent logic in the backend -->
-						<!-- Example: foreach (httruyenbean tbean in ds) { -->
-							<li>
-
-							</li>
-						<!-- Example: } -->
-				    </ul>
+					<?php foreach ($dstruyennew as $truyennew) : ?>
+						<ul class="mb-2 p-1">
+							<a class="text-start text-decoration-none" href="../../Controller/TruyenController.php?mt=<?= $truyennew['matruyen']?>" class="text-decoration-none">
+								<h6 class="mt-1 text-primary"><i class="bi bi-tags-fill m-2 text-secondary"></i><?= $truyennew['tentruyen']; ?></h6>
+							</a>
+							<a href="" class="text-decoration-none">
+								<h6 class="mt-1"></h6>
+							</a>
+						</ul>
+					<?php endforeach; ?>
 				</div>
 			</div>
 	    </div>
