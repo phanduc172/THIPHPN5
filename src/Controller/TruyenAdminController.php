@@ -28,9 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if (!empty($mtlStr)) {
             $mtl = intval($mtlStr);
         }
-        var_dump($action, $titlesearch, $mtrStr, $tentruyen, $anh, $noidung, $mota, $mtgStr, $mtlStr, $mtr, $mtg, $mtl);
         if ($titlesearch != null) {
-            print($titlesearch);
             $dstruyen = searchTruyenByName($titlesearch);
             $_SESSION['dstruyen'] = $dstruyen;
             header("Location: ../View/Admin/AdminTruyen.php?hihi=haha");
@@ -39,15 +37,18 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if (isset($_GET["butadd"])) {
             if (!is_null($tentruyen) && !is_null($anh) && !is_null($noidung) && !is_null($mota) && !is_null($mtg) && !is_null($mtl)) {
                 addTruyen($tentruyen, $anh, $noidung, $mota, $mtg, $mtl);
+                $_SESSION['tb'] = "thêm truyện thành công";
             }
         } elseif (isset($_GET["butupdate"])) {
             if (!is_null($mtr) && !is_null($tentruyen) && !is_null($anh) && !is_null($noidung) && !is_null($mota) && !is_null($mtg) && !is_null($mtl)) {
                 updateTruyen($mtr, $tentruyen, $anh, $noidung, $mota, $mtg, $mtl);
+                $_SESSION['tb'] = "cập nhật truyện thành công";
             }
         } elseif ($delete != null && $delete == "xoa") {
             $mtrxoa = $_GET["mtr"];
             $matruyen = intval($mtrxoa);
             deleteTruyen($matruyen);
+            $_SESSION['tb'] = "xóa truyện thành công";
         }
 
         $dstruyen = getAllTruyen();

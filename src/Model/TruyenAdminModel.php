@@ -2,7 +2,6 @@
 
 include '../connect.php';
 
-
 function getAllTruyen()
 {
     try {
